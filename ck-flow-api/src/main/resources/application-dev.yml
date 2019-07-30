@@ -1,0 +1,7 @@
+flow:
+  mysql:
+    open: true
+    jdbcUrl: jdbc:mysql://localhost:3306/ck-flow-common?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    userName: root
+    password: root
+    JdbcDriver: com.mysql.jdbc.Driver

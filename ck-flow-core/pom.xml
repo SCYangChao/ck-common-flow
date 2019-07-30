@@ -12,7 +12,7 @@
 
     <groupId>com.yqkj</groupId>
     <artifactId>ck-flow-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${sub.version}</version>
 
     <dependencies>
 
@@ -21,7 +21,14 @@
             <artifactId>ck-flow-common</artifactId>
             <version>${sub.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+        </dependency>
     </dependencies>
     
 </project>
