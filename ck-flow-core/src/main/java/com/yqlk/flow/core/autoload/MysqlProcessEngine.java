@@ -1,13 +1,12 @@
-package com.yqlk.flow.api.autoload;
+package com.yqlk.flow.core.autoload;
 
-import com.yqlk.flow.api.config.MysqlProcessEngineConfiguration;
+import com.yqlk.flow.core.config.MysqlProcessEngineConfiguration;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngineConfiguration;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
 
 /**
