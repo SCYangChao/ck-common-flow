@@ -2,14 +2,14 @@ server:
   port: 8004
 spring:
   application:
-    name: ck-flow-service-core
+    name: ck-flow-service-api
   profiles:
     active: dev
 urls:
   anon:
     - /swagger-resources/**
     - /swagger-ui.html
-    - /v2/core-docs
-    - /swagger/core-docs
+    - /v2/api-docs
+    - /swagger/api-docs
     - /webjars/**
 

@@ -17,6 +17,7 @@
     <properties>
         <flowable.version>6.4.2</flowable.version>
         <sub.version>1.0-SNAPSHOT</sub.version>
+        <swagger2.version>2.8.0</swagger2.version>
     </properties>
     <dependencies>
         <!--Redis-->

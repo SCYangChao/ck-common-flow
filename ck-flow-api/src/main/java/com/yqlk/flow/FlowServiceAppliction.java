@@ -1,4 +1,4 @@
-package com.yqlk.flow.core;
+package com.yqlk.flow;
 
 
 import org.springframework.boot.SpringApplication;
