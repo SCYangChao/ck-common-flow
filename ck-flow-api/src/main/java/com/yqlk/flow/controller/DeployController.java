@@ -1,6 +1,7 @@
 package com.yqlk.flow.controller;
 
 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
   *
  **/
 @RestController
+@RequestMapping("/flow/v1.0/deploy")
 public class DeployController {
 
-    
+
 
 }
