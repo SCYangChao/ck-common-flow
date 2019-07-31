@@ -1,8 +1,9 @@
-package com.yqlk.flow.core.autoload;
+package com.yqkj.flow.core.autoload;
 
-import com.yqlk.flow.core.config.MysqlProcessEngineConfiguration;
+import com.yqkj.flow.core.config.MysqlProcessEngineConfiguration;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.ProcessEngineConfiguration;
+import org.flowable.engine.RepositoryService;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,13 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 @ConditionalOnBean(MysqlProcessEngineConfiguration.class)
-public class MysqlProcessEngine implements  IProcessEngine,InitializingBean {
+public class MysqlProcessEngine implements IProcessEngineContext,InitializingBean {
 
     @Autowired
     private MysqlProcessEngineConfiguration mysqlProcessEngineConfiguration;
 
+
+    private RepositoryService repositoryService;
 
     private ProcessEngine processEngine;
     /**
@@ -37,6 +40,11 @@ public class MysqlProcessEngine implements  IProcessEngine,InitializingBean {
     }
 
     @Override
+    public RepositoryService getRepositoryService() {
+        return this.repositoryService;
+    }
+
+    @Override
     public void afterPropertiesSet() throws Exception {
         ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
                 .setJdbcUrl(mysqlProcessEngineConfiguration.getJdbcUrl())
@@ -45,6 +53,6 @@ public class MysqlProcessEngine implements  IProcessEngine,InitializingBean {
                 .setJdbcDriver(mysqlProcessEngineConfiguration.getJdbcDriver())
                 .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_FALSE);
         this.processEngine= cfg.buildProcessEngine();
-
+        this.repositoryService=this.processEngine.getRepositoryService();
     }
 }

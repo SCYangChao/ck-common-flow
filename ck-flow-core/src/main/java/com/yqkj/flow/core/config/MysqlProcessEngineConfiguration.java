@@ -1,4 +1,4 @@
-package com.yqlk.flow.core.config;
+package com.yqkj.flow.core.config;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
