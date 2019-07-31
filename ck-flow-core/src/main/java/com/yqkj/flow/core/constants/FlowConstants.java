@@ -10,6 +10,10 @@ package com.yqkj.flow.core.constants;
  **/
 public interface FlowConstants {
 
+    /**
+     * 发布
+     */
+    String DEPLOY_STR="DEPLOY_STR";
 
 
 }

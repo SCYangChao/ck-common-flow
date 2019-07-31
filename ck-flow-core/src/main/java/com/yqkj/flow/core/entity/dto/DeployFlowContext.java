@@ -3,6 +3,7 @@ package com.yqkj.flow.core.entity.dto;
 
 import com.yqkj.flow.core.constants.FlowEnum;
 import lombok.Data;
+import org.flowable.engine.repository.Deployment;
 
 /**
  *
@@ -34,6 +35,11 @@ public class DeployFlowContext extends  FlowContext {
      * 流程设计器
      */
     private String xmlStr;
+
+    /**
+     * 流程发布返回
+     */
+    private Deployment deploymentResult;
 
 
 

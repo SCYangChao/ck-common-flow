@@ -1,6 +1,7 @@
 package com.yqkj.flow.core.deploy;
 
 import com.yqkj.flow.core.entity.dto.DeployFlowContext;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -10,12 +11,14 @@ import com.yqkj.flow.core.entity.dto.DeployFlowContext;
   * creat_date: 上午9:30
   *
  **/
-public interface IDeployServiceService {
+@Service("defaultDeployServiceService")
+public class DefaultDeployServiceService implements IDeployServiceService  {
     /**
-     *
      * @param flowContext
      * @return
      */
-    Boolean deploy(DeployFlowContext flowContext);
-
+    @Override
+    public Boolean deploy(DeployFlowContext flowContext) {
+        return null;
+    }
 }
