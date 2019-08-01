@@ -22,6 +22,11 @@
             <version>${sub.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.yqkj</groupId>
+            <artifactId>ck-flow-client</artifactId>
+            <version>${sub.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>

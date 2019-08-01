@@ -1,6 +1,6 @@
 package com.yqkj.flow.core.deploy;
 
-import com.yqkj.flow.core.entity.dto.DeployFlowContext;
+import com.yqkj.flow.entity.dto.DeployFlowContext;
 
 /**
  *

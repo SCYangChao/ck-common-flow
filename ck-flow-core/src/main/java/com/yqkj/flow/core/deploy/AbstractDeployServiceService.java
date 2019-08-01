@@ -1,9 +1,9 @@
 package com.yqkj.flow.core.deploy;
 
 
-import com.yqkj.flow.core.entity.dto.DeployFlowContext;
-import com.yqkj.flow.core.autoload.IProcessEngineContext;
-import com.yqkj.flow.core.constants.FlowEnum;
+import com.yqkj.flow.entity.dto.DeployFlowContext;
+import com.yqkj.flow.autoload.IProcessEngineContext;
+import com.yqkj.flow.constants.FlowEnum;
 import com.yqkj.flow.core.util.DeployUtil;
 import lombok.extern.log4j.Log4j2;
 import org.flowable.bpmn.converter.BpmnXMLConverter;
@@ -117,6 +117,11 @@ public abstract class AbstractDeployServiceService implements  IDeployServiceSer
         return Boolean.FALSE;
     }
 
-    abstract  Boolean excute(DeployFlowContext deployFlowContext);
+    /**
+     * 发布流程实现类
+     * @param deployFlowContext
+     * @return
+     */
+    public  abstract  Boolean excute(DeployFlowContext deployFlowContext);
 
 }
