@@ -5,9 +5,8 @@ import com.yqkj.client.dto.R;
 import com.yqkj.client.dto.request.deploy.DelopyRequest;
 import com.yqkj.client.dto.response.DeployResponse;
 import com.yqkj.flow.constants.FlowEnum;
-import com.yqkj.flow.core.deploy.IDeployServiceService;
+import com.yqkj.flow.core.deploy.IDeployService;
 import com.yqkj.flow.entity.dto.DeployFlowContext;
-import com.yqkj.flow.entity.dto.file.UploadFileResponse;
 import com.yqkj.flow.util.ResponseToole;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,8 +31,8 @@ import java.io.IOException;
 public class DeployController {
 
     @Autowired
-    @Qualifier(value = "defaultDeployServiceService")
-    private IDeployServiceService deployServiceService;
+    @Qualifier(value = "defaultDeployService")
+    private IDeployService deployServiceService;
 
     @PostMapping(value = "/deployFile",consumes = "multipartFile/*",headers = "content-type=multipart/form-data")
     @ApiOperation(value = "流程发布－单个文件上传" , tags = "流程设计发布-V1.0")

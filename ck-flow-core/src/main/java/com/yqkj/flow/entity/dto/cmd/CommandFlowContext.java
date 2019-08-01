@@ -1,11 +1,10 @@
-package com.yqkj.flow.entity.dto;
+package com.yqkj.flow.entity.dto.cmd;
 
 
 import com.yqkj.flow.constants.FlowEnum;
+import com.yqkj.flow.entity.dto.FlowContext;
 import lombok.Data;
 import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntity;
-import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntityImpl;
-import org.flowable.engine.repository.Deployment;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import java.util.List;
   *
  **/
 @Data
-public class DeployFlowContext extends  FlowContext {
+public class CommandFlowContext extends  FlowContext {
 
     private FlowEnum.DeployTypeEnum deployTypeEnum;
 
@@ -47,7 +46,7 @@ public class DeployFlowContext extends  FlowContext {
 
 
 
-    public DeployFlowContext(FlowEnum.DeployTypeEnum deployTypeEnum, String xmlStr) {
+    public CommandFlowContext(FlowEnum.DeployTypeEnum deployTypeEnum, String xmlStr) {
         this.deployTypeEnum = deployTypeEnum;
         this.xmlStr = xmlStr;
     }

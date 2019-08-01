@@ -1,10 +1,11 @@
-package com.yqkj.flow.core.deploy.imp;
+package com.yqkj.flow.core.cmd.imp;
 
 
 import com.yqkj.flow.autoload.IProcessEngineContext;
 import com.yqkj.flow.constants.FlowConstants;
-import com.yqkj.flow.core.deploy.AbstractDeployService;
+import com.yqkj.flow.core.cmd.AbstractCommandService;
 import com.yqkj.flow.entity.dto.DeployFlowContext;
+import com.yqkj.flow.entity.dto.cmd.CommandFlowContext;
 import org.flowable.engine.impl.persistence.entity.DeploymentEntityImpl;
 import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntity;
 import org.flowable.engine.repository.Deployment;
@@ -21,14 +22,14 @@ import java.util.List;
   * creat_date: 下午6:14
   *
  **/
-@Service(FlowConstants.DEPLOY_PRE+ FlowConstants.DEPLOY_STR)
-public class StringDeployService extends AbstractDeployService {
+@Service(FlowConstants.DEPLOY_PRE+ "CommandFlowContext")
+public class StartCommandService extends AbstractCommandService {
 
     @Autowired
     private IProcessEngineContext iProcessEngine;
 
     @Override
-    public  Boolean excute(DeployFlowContext deployFlowContext){
+    public  Boolean excute(CommandFlowContext deployFlowContext){
 
         Deployment deploy = iProcessEngine.getRepositoryService().createDeployment().
                 addString(deployFlowContext.getName(),

@@ -4,13 +4,13 @@ import com.yqkj.flow.entity.dto.DeployFlowContext;
 
 /**
  *
-  * class_name: IDeployServiceService
+  * class_name: ICommandService
   * describe: do
   * @author: yangchao.cool@gmail.com
   * creat_date: 上午9:30
   *
  **/
-public interface IDeployServiceService {
+public interface IDeployService {
     /**
      *
      * @param flowContext

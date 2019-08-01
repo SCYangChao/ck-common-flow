@@ -14,20 +14,20 @@ import java.util.Objects;
 
 /**
  *
-  * class_name: IDeployServiceService
+  * class_name: ICommandService
   * describe: do
   * @author: yangchao.cool@gmail.com
   * creat_date: 上午9:30
   *
  **/
-@Service(value = "defaultDeployServiceService")
+@Service(value = "defaultDeployService")
 @Log4j2
-public class DefaultDeployServiceService implements IDeployServiceService ,ApplicationContextAware {
+public class DefaultDeployService implements IDeployService,ApplicationContextAware {
 
     /**
      * 处理发布ServiceService
      */
-    private Map<String , IDeployServiceService> deployServiceService = new HashMap<>(10);
+    private Map<String , IDeployService> deployServiceService = new HashMap<>(10);
 
     /**
      * @param flowContext
@@ -43,7 +43,7 @@ public class DefaultDeployServiceService implements IDeployServiceService ,Appli
         }
 
         String serviceKey = FlowConstants.DEPLOY_PRE + flowContext.getDeployTypeEnum();
-        IDeployServiceService iDeployServiceService = deployServiceService.get(serviceKey);
+        IDeployService iDeployServiceService = deployServiceService.get(serviceKey);
 
         if (Objects.isNull(iDeployServiceService)) {
 
@@ -78,7 +78,7 @@ public class DefaultDeployServiceService implements IDeployServiceService ,Appli
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 
-        Map<String, AbstractDeployServiceService> beansOfType = applicationContext.getBeansOfType(AbstractDeployServiceService.class);
+        Map<String, AbstractDeployService> beansOfType = applicationContext.getBeansOfType(AbstractDeployService.class);
 
         if (!Objects.isNull(beansOfType) && !beansOfType.isEmpty()) {
 

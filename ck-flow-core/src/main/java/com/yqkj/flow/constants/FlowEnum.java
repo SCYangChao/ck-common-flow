@@ -12,6 +12,23 @@ package com.yqkj.flow.constants;
 public interface FlowEnum {
 
     /**
+     * 流程执行命令查询
+     */
+    enum  FlowCmdEnum implements FlowEnum {
+        START("start" , "流程开始"),NEXT("next" , "流程下一步执行"),END("end","终止流程"),FINISH("finish","流程结束");
+
+        private String vlue;
+
+        private String msg;
+
+        FlowCmdEnum(String vlue , String msg) {
+            this.vlue=vlue;
+            this.msg=msg;
+        }
+
+    }
+
+    /**
      * 发布流程设计类型
      */
     enum  DeployTypeEnum implements  FlowEnum {
