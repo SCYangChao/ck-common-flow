@@ -1,8 +1,7 @@
 package com.yqkj.flow.autoload;
 
 
-import org.flowable.engine.ProcessEngine;
-import org.flowable.engine.RepositoryService;
+import org.flowable.engine.*;
 
 /**
  *  流程引擎
@@ -26,4 +25,46 @@ public interface IProcessEngineContext {
      * @return
      */
     RepositoryService getRepositoryService();
+
+    /**
+     * 流程运行时信息
+     * @return
+     */
+    RuntimeService getRuntimeService();
+
+    /**
+     * 流程表单
+     * @return
+     */
+    FormService getFormService();
+
+    /**
+     * 任务管理
+     * @return
+     */
+    TaskService getTaskService();
+
+    /**
+     * 流程历史数据
+     * @return
+     */
+    HistoryService getHistoryService();
+
+    /**
+     * 流程认证
+     * @return
+     */
+    IdentityService getIdentityService();
+
+    /**
+     * 流程管理
+     * @return
+     */
+    ManagementService getManagementService();
+
+    /**
+     *
+     * @return
+     */
+    DynamicBpmnService getDynamicBpmnService();
 }

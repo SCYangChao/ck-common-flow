@@ -26,12 +26,10 @@ import java.util.Objects;
 @Service(value = "commandService")
 @Log4j2
 public class CommandService implements ICommandService,ApplicationContextAware {
-
     /**
-     * 处理发布ServiceService
+     * 处理执行流程ServiceService
      */
     private Map<String , ICommandService> deployServiceService = new HashMap<>(10);
-
     /**
      * @param flowContext
      * @return
@@ -41,37 +39,37 @@ public class CommandService implements ICommandService,ApplicationContextAware {
 
         if (log.isDebugEnabled()) {
 
-            log.info("流程发布开始{},");
+            log.info("流程发布开始{}" , flowContext);
 
         }
 
-        String serviceKey = FlowConstants.DEPLOY_PRE + flowContext.getDeployTypeEnum();
-        ICommandService iDeployServiceService = deployServiceService.get(serviceKey);
+        String serviceKey = FlowConstants.COMMAND_PRE + flowContext.getCmdEnum().getVlue();
+        ICommandService iCommandService = deployServiceService.get(serviceKey);
 
-        if (Objects.isNull(iDeployServiceService)) {
+        if (Objects.isNull(iCommandService)) {
 
-            log.error("iDeployServiceService bean null,service name:{}", serviceKey);
+            log.error("iCommandService bean null,command service name:{}", serviceKey);
 
-            flowContext.setDeploySuccess(Boolean.FALSE);
+            flowContext.setSuccess(Boolean.FALSE);
 
-            flowContext.setErrorMsg("流程发布策略出错，流程引擎内部错误");
+            flowContext.setMsg("流程执行内部出错，流程引擎内部错误");
 
             return  Boolean.FALSE;
 
         }
 
-        Boolean deploy = iDeployServiceService.cmd(flowContext);
+        Boolean deploy = iCommandService.cmd(flowContext);
 
         if (log.isDebugEnabled()) {
 
-            log.error("flow excute {} result:{}", serviceKey,deploy);
+            log.error("flow Command {} result:{}", serviceKey,deploy);
 
         }
 
         if (!deploy) {
 
-            flowContext.setDeploySuccess(Boolean.FALSE);
-            flowContext.setErrorMsg("流程发布失败");
+            flowContext.setSuccess(Boolean.FALSE);
+            flowContext.setMsg("流程发布失败");
 
         }
 

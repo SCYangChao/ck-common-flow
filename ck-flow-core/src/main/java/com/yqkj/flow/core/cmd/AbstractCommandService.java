@@ -31,8 +31,7 @@ import java.util.Objects;
 public abstract class AbstractCommandService implements ICommandService {
 
     @Autowired
-    private IProcessEngineContext iProcessEngine;
-
+    protected IProcessEngineContext iProcessEngine;
     /**
      * @param commandFlowContext
      * @return
@@ -42,7 +41,7 @@ public abstract class AbstractCommandService implements ICommandService {
 
         if (log.isDebugEnabled()) {
 
-            log.debug("发布流程，名称：{},入参：{}" , commandFlowContext.getName(),commandFlowContext);
+            log.debug("执行流程：{},开始" ,commandFlowContext);
 
         }
 
@@ -50,7 +49,7 @@ public abstract class AbstractCommandService implements ICommandService {
 
         if (!validate) {
 
-            log.info("流程验证失败 , 名称：{}",commandFlowContext.getName());
+            log.info("执行验证流程失败 ,{}",commandFlowContext);
 
             return Boolean.FALSE;
 
@@ -59,27 +58,27 @@ public abstract class AbstractCommandService implements ICommandService {
 
         if (log.isDebugEnabled()) {
 
-            log.info("流程发布 , 名称：{}",commandFlowContext.getName());
+            log.info("执行流程开始 , 命令为：{}",commandFlowContext.getCmdEnum());
 
         }
 
-        Boolean excute = this.cmd(commandFlowContext);
+        Boolean excute = this.excute(commandFlowContext);
 
         if (log.isDebugEnabled()) {
 
-            log.info("流程发布结果 {}",excute);
+            log.info("流程执行结果 {}",excute);
 
         }
 
         if (!excute) {
 
-            log.info("流程发布失败 {}",commandFlowContext.getName());
+            log.info("流程执行失败 {}",commandFlowContext);
 
             return Boolean.FALSE;
 
         }
 
-        log.info("流程发布成功 {}",commandFlowContext.getName());
+        log.info("流程执行成功 {}",commandFlowContext.getResult());
 
         return Boolean.TRUE;
     }

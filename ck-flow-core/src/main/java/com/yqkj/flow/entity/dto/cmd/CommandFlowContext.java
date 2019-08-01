@@ -6,7 +6,9 @@ import com.yqkj.flow.entity.dto.FlowContext;
 import lombok.Data;
 import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -19,35 +21,28 @@ import java.util.List;
 @Data
 public class CommandFlowContext extends  FlowContext {
 
-    private FlowEnum.DeployTypeEnum deployTypeEnum;
+    private FlowEnum.FlowCmdEnum cmdEnum;
 
     /**
-     * 流程发布名称
+     * 流程名称关键字
      */
-    private String name;
-    /**
-     * 流程发布出错信息
-     */
-    private String errorMsg="流程发布成功";
+    private String flowKey;
 
     /**
-     * 发布流程是否成功
+     *流程ＴａｓｋＩＤ
      */
-    private Boolean deploySuccess = Boolean.FALSE;
+    private String taskId;
     /**
-     * 流程设计器
+     * 流程数据
      */
-    private String xmlStr;
+    private Map<String,Object> variable;
 
+    private String msg;
+
+    private Boolean success = Boolean.TRUE;
     /**
-     * 流程发布返回
+     * 返回值
      */
-    private List<ProcessDefinitionEntity> deploymentResult;
+    private Map<String , Object> result = new HashMap<>(3);
 
-
-
-    public CommandFlowContext(FlowEnum.DeployTypeEnum deployTypeEnum, String xmlStr) {
-        this.deployTypeEnum = deployTypeEnum;
-        this.xmlStr = xmlStr;
-    }
 }

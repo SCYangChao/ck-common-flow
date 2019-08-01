@@ -1,9 +1,7 @@
 package com.yqkj.flow.autoload;
 
 import com.yqkj.flow.config.MysqlProcessEngineConfiguration;
-import org.flowable.engine.ProcessEngine;
-import org.flowable.engine.ProcessEngineConfiguration;
-import org.flowable.engine.RepositoryService;
+import org.flowable.engine.*;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +40,73 @@ public class MysqlProcessEngine implements IProcessEngineContext,InitializingBea
     @Override
     public RepositoryService getRepositoryService() {
         return this.repositoryService;
+    }
+    /**
+     * 流程运行时信息
+     *
+     * @return
+     */
+    @Override
+    public RuntimeService getRuntimeService() {
+        return processEngine.getRuntimeService();
+    }
+
+    /**
+     * 流程表单
+     *
+     * @return
+     */
+    @Override
+    public FormService getFormService() {
+        return processEngine.getFormService();
+    }
+
+    /**
+     * 任务管理
+     *
+     * @return
+     */
+    @Override
+    public TaskService getTaskService() {
+        return processEngine.getTaskService();
+    }
+
+    /**
+     * 流程历史数据
+     *
+     * @return
+     */
+    @Override
+    public HistoryService getHistoryService() {
+        return processEngine.getHistoryService();
+    }
+
+    /**
+     * 流程认证
+     *
+     * @return
+     */
+    @Override
+    public IdentityService getIdentityService() {
+        return processEngine.getIdentityService();
+    }
+
+    /**
+     * 流程管理
+     *
+     * @return
+     */
+    @Override
+    public ManagementService getManagementService() {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public DynamicBpmnService getDynamicBpmnService() {
+        return processEngine.getDynamicBpmnService();
     }
 
     @Override
