@@ -47,7 +47,7 @@ public class CommandController {
      **/
     @PostMapping(value = "/start")
     @ApiOperation(value = "开始" , tags = FlowConstants.CMD_VERSION_1_0)
-    public R<Map<String , Object>> upload(@RequestBody  StartRequest startRequest) {
+    public R<Map<String , Object>> start(@RequestBody  StartRequest startRequest) {
         CommandFlowContext result= new CommandFlowContext();
         result.setFlowKey(startRequest.getFlowKey());
         result.setVariable(startRequest.getVariable());
@@ -55,5 +55,19 @@ public class CommandController {
         iCommandService.cmd(result);
         return ResponseToole.success(result.getResult());
     }
-
+    /**
+     *
+     * describe: 流程开始
+     * @author: yangchao.cool@gmail.com
+     * creat_date: 下午5:52
+     *
+     **/
+    @PostMapping(value = "/queryTask")
+    @ApiOperation(value = "任务查询" , tags = FlowConstants.CMD_VERSION_1_0)
+    public R<Map<String , Object>> queryTask(@RequestBody  StartRequest startRequest) {
+        CommandFlowContext result= new CommandFlowContext();
+        result.setCmdEnum(FlowEnum.FlowCmdEnum.QUERY_TASK);
+        iCommandService.cmd(result);
+        return ResponseToole.success(result.getResult());
+    }
 }

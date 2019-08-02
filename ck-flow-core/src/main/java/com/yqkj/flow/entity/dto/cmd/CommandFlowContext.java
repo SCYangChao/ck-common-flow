@@ -4,6 +4,7 @@ package com.yqkj.flow.entity.dto.cmd;
 import com.yqkj.flow.constants.FlowEnum;
 import com.yqkj.flow.entity.dto.FlowContext;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntity;
 
 import java.util.HashMap;
@@ -45,4 +46,13 @@ public class CommandFlowContext extends  FlowContext {
      */
     private Map<String , Object> result = new HashMap<>(3);
 
+    public  void addResult(String key , Object v) {
+
+        if (StringUtils.isNotBlank(key)) {
+
+            result.put(key, v);
+
+        }
+
+    }
 }

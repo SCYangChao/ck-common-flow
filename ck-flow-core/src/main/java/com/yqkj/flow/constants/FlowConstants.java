@@ -26,6 +26,8 @@ public interface FlowConstants {
      */
     String FLOW_START = "start";
 
+    String FLOW_QUERY_TASK = "query_task";
+
     /**
      * 字符串方式发布发布
      */

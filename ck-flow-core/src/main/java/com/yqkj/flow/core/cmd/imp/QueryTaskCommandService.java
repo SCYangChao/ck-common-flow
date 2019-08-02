@@ -4,8 +4,10 @@ package com.yqkj.flow.core.cmd.imp;
 import com.yqkj.flow.constants.FlowConstants;
 import com.yqkj.flow.core.cmd.AbstractCommandService;
 import com.yqkj.flow.entity.dto.cmd.CommandFlowContext;
-import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.task.api.Task;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -15,14 +17,13 @@ import org.springframework.stereotype.Service;
   * creat_date: 下午6:14
   *
  **/
-@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_START)
-public class StartCommandService extends AbstractCommandService {
+@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_QUERY_TASK)
+public class QueryTaskCommandService extends AbstractCommandService {
 
     @Override
     public  Boolean excute(CommandFlowContext deployFlowContext){
-        ProcessInstance processInstance = this.iProcessEngine.getRuntimeService().startProcessInstanceByKey(deployFlowContext.getFlowKey()
-                , deployFlowContext.getVariable());
-        deployFlowContext.addResult("processDefinitionId",processInstance.getProcessInstanceId());
+        List<Task> list = this.iProcessEngine.getTaskService().createTaskQuery().taskCandidateOrAssigned("5").list();
+        deployFlowContext.addResult("taskList",list);
         return Boolean.TRUE;
     }
 

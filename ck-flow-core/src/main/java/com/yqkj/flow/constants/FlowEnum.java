@@ -15,7 +15,10 @@ public interface FlowEnum {
      * 流程执行命令查询
      */
     enum  FlowCmdEnum implements FlowEnum {
-        START(FlowConstants.FLOW_START , "流程开始"),NEXT("next" , "流程下一步执行"),END("end","终止流程"),FINISH("finish","流程结束");
+        START(FlowConstants.FLOW_START , "流程开始"),
+        NEXT("next" , "流程下一步执行"),END("end","终止流程"),
+        FINISH("finish","流程结束"),
+        QUERY_TASK(FlowConstants.FLOW_QUERY_TASK,"任务查询");
 
         private String vlue;
 
