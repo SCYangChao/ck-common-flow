@@ -25,8 +25,14 @@ public interface FlowConstants {
      * 流程开始
      */
     String FLOW_START = "start";
-
+    /**
+     * 任务查询
+     */
     String FLOW_QUERY_TASK = "query_task";
+    /**
+     * 任务下一步
+     */
+    String FLOW_Next_TASK = "next_task";
 
     /**
      * 字符串方式发布发布

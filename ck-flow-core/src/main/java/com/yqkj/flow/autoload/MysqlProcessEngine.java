@@ -1,8 +1,13 @@
 package com.yqkj.flow.autoload;
 
 import com.yqkj.flow.config.MysqlProcessEngineConfiguration;
+import com.yqkj.flow.core.umps.FlowIdmIdentityService;
+import com.yqkj.flow.core.umps.group.FlowGroupQuery;
+import com.yqkj.flow.core.umps.user.FlowUserQuery;
 import org.flowable.engine.*;
+import org.flowable.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
+import org.flowable.idm.api.IdmIdentityService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -24,9 +29,17 @@ public class MysqlProcessEngine implements IProcessEngineContext,InitializingBea
     private MysqlProcessEngineConfiguration mysqlProcessEngineConfiguration;
 
 
+    private FlowIdmIdentityService  idmIdentityService;
+
     private RepositoryService repositoryService;
 
     private ProcessEngine processEngine;
+
+    @Autowired
+    private FlowUserQuery flowUserQuery;
+
+    @Autowired
+    private FlowGroupQuery flowGroupQuery;
     /**
      * 获取流程引擎执行服务
      *
@@ -88,7 +101,7 @@ public class MysqlProcessEngine implements IProcessEngineContext,InitializingBea
      */
     @Override
     public IdentityService getIdentityService() {
-        return processEngine.getIdentityService();
+        return idmIdentityService;
     }
 
     /**
@@ -117,7 +130,13 @@ public class MysqlProcessEngine implements IProcessEngineContext,InitializingBea
                 .setJdbcPassword(mysqlProcessEngineConfiguration.getPassword())
                 .setJdbcDriver(mysqlProcessEngineConfiguration.getJdbcDriver())
                 .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_FALSE);
+
         this.processEngine= cfg.buildProcessEngine();
         this.repositoryService=this.processEngine.getRepositoryService();
+
+        this.idmIdentityService = new FlowIdmIdentityService((ProcessEngineConfigurationImpl)cfg);
+        idmIdentityService.setGroupQuery(flowGroupQuery);
+        idmIdentityService.setUserQuery(flowUserQuery);
+
     }
 }

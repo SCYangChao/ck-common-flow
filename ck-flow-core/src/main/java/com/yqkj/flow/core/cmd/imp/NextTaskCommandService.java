@@ -18,8 +18,8 @@ import java.util.List;
   * creat_date: 下午6:14
   *
  **/
-@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_QUERY_TASK)
-public class QueryTaskCommandService extends AbstractCommandService {
+@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_Next_TASK)
+public class NextTaskCommandService extends AbstractCommandService {
 
     @Override
     public  Boolean excute(CommandFlowContext deployFlowContext){
