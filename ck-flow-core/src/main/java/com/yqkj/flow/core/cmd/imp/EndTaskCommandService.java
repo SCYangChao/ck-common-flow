@@ -14,11 +14,12 @@ import org.springframework.stereotype.Service;
   * creat_date: 下午6:14
   *
  **/
-@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_Next_TASK)
-public class NextTaskCommandService extends AbstractCommandService<Boolean> {
+@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_END_TASK)
+public class EndTaskCommandService extends AbstractCommandService<Boolean> {
 
     @Override
     public  Boolean excute(CommandFlowContext<Boolean> deployFlowContext){
+        this.iProcessEngine.getRuntimeService().deleteProcessInstance("","");
         this.iProcessEngine.getTaskService().complete("", null);
         deployFlowContext.addResult(this.RESULT_FLAG, Boolean.TRUE);
         return Boolean.TRUE;

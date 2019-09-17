@@ -28,10 +28,13 @@ import java.util.Objects;
   *
  **/
 @Log4j2
-public abstract class AbstractCommandService implements ICommandService {
+public abstract class AbstractCommandService<R> implements ICommandService {
 
     @Autowired
     protected IProcessEngineContext iProcessEngine;
+
+    public final String RESULT_FLAG = "RESULT_FLAG";
+
     /**
      * @param commandFlowContext
      * @return
@@ -87,7 +90,7 @@ public abstract class AbstractCommandService implements ICommandService {
      * 　验证
      * @return
      */
-    public Boolean validate(CommandFlowContext commandFlowContext) {
+    public Boolean validate(CommandFlowContext<R> commandFlowContext) {
         return  Boolean.TRUE;
     }
     /**
@@ -95,6 +98,6 @@ public abstract class AbstractCommandService implements ICommandService {
      * @param commandFlowContext
      * @return
      */
-    public  abstract  Boolean excute(CommandFlowContext commandFlowContext);
+    public  abstract  Boolean excute(CommandFlowContext<R> commandFlowContext);
 
 }

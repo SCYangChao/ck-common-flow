@@ -89,7 +89,8 @@ public abstract class AbstractDeployService implements IDeployService {
      */
     public Boolean validate(DeployFlowContext deployFlowContext) {
 
-        if (!Objects.isNull(deployFlowContext.getDeployTypeEnum()) && FlowEnum.DeployTypeEnum.DEPLOY_STR == deployFlowContext.getDeployTypeEnum()) {
+        if (!Objects.isNull(deployFlowContext.getDeployTypeEnum())
+                && FlowEnum.DeployTypeEnum.DEPLOY_STR == deployFlowContext.getDeployTypeEnum()) {
             try {
                 XMLInputFactory xif = XMLInputFactory.newInstance();
                 InputStreamReader in = new InputStreamReader(new ByteArrayInputStream(deployFlowContext.getXmlStr().getBytes()), "UTF-8");

@@ -20,7 +20,7 @@ import java.util.Map;
   *
  **/
 @Data
-public class CommandFlowContext extends  FlowContext {
+public class CommandFlowContext<R> extends  FlowContext {
 
     private FlowEnum.FlowCmdEnum cmdEnum;
 
@@ -44,9 +44,9 @@ public class CommandFlowContext extends  FlowContext {
     /**
      * 返回值
      */
-    private Map<String , Object> result = new HashMap<>(3);
+    private Map<String , R> result = new HashMap<>(3);
 
-    public  void addResult(String key , Object v) {
+    public  void addResult(String key , R v) {
 
         if (StringUtils.isNotBlank(key)) {
 

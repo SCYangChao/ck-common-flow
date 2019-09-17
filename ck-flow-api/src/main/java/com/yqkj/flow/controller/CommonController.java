@@ -29,7 +29,6 @@ public class CommonController {
     @ApiOperation(value = "文件上传" , tags = "文件上传-V1.0")
     public R<UploadFileResponse> upload(@ApiParam(value = "上传的文件", required = true) MultipartFile file, HttpServletRequest request) {
         UploadFileResponse result= new UploadFileResponse();
-
         return ResponseToole.success(result);
     }
 

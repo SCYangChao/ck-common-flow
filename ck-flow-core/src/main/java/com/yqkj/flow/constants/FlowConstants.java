@@ -35,6 +35,11 @@ public interface FlowConstants {
     String FLOW_Next_TASK = "next_task";
 
     /**
+     * 任务结束
+     */
+    String FLOW_END_TASK = "end_task";
+
+    /**
      * 字符串方式发布发布
      */
     String DEPLOY_STR="DEPLOY_STR";

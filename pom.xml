@@ -40,8 +40,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.2.0</version>
+        </dependency>
     </dependencies>
-
     <modules>
         <module>ck-flow-core</module>
         <module>ck-flow-common</module>

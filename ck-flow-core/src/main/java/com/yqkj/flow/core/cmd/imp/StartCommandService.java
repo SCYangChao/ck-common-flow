@@ -7,6 +7,8 @@ import com.yqkj.flow.entity.dto.cmd.CommandFlowContext;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  *
   * class_name: StartCommandService
@@ -16,13 +18,13 @@ import org.springframework.stereotype.Service;
   *
  **/
 @Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_START)
-public class StartCommandService extends AbstractCommandService {
+public class StartCommandService extends AbstractCommandService<Map<String, String>> {
 
     @Override
-    public  Boolean excute(CommandFlowContext deployFlowContext){
+    public  Boolean excute(CommandFlowContext<Map<String, String>> deployFlowContext){
         ProcessInstance processInstance = this.iProcessEngine.getRuntimeService().startProcessInstanceByKey(deployFlowContext.getFlowKey()
                 , deployFlowContext.getVariable());
-        deployFlowContext.addResult("processDefinitionId",processInstance.getProcessInstanceId());
+        deployFlowContext.addResult(this.RESULT_FLAG,null);
         return Boolean.TRUE;
     }
 
