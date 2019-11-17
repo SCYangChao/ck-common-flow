@@ -7,6 +7,7 @@ import com.yqkj.flow.entity.dto.cmd.CommandFlowContext;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -24,7 +25,11 @@ public class StartCommandService extends AbstractCommandService<Map<String, Stri
     public  Boolean excute(CommandFlowContext<Map<String, String>> deployFlowContext){
         ProcessInstance processInstance = this.iProcessEngine.getRuntimeService().startProcessInstanceByKey(deployFlowContext.getFlowKey()
                 , deployFlowContext.getVariable());
-        deployFlowContext.addResult(this.RESULT_FLAG,null);
+        String processInstanceId = processInstance.getProcessInstanceId();
+        Map<String , String>  result = new HashMap<>();
+        result.put("processInstanceId" , processInstanceId);
+        result.put("processDefinitionId" , processInstance.getProcessDefinitionId());
+        deployFlowContext.addResult(this.RESULT_FLAG,result);
         return Boolean.TRUE;
     }
 

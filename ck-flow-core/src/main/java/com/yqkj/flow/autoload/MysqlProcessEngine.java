@@ -129,14 +129,13 @@ public class MysqlProcessEngine implements IProcessEngineContext,InitializingBea
                 .setJdbcUsername(mysqlProcessEngineConfiguration.getUserName())
                 .setJdbcPassword(mysqlProcessEngineConfiguration.getPassword())
                 .setJdbcDriver(mysqlProcessEngineConfiguration.getJdbcDriver())
-                .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_FALSE);
-
-        this.processEngine= cfg.buildProcessEngine();
-        this.repositoryService=this.processEngine.getRepositoryService();
-
+                .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
         this.idmIdentityService = new FlowIdmIdentityService((ProcessEngineConfigurationImpl)cfg);
         idmIdentityService.setGroupQuery(flowGroupQuery);
         idmIdentityService.setUserQuery(flowUserQuery);
+
+        this.processEngine= cfg.buildProcessEngine();
+        this.repositoryService=this.processEngine.getRepositoryService();
 
     }
 }

@@ -1,4 +1,4 @@
-package com.yqkj.flow.collection;
+package com.yqkj.flow.util.collection;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -43,8 +43,6 @@ public class CollectionUtil {
 		return Arrays.asList(str.split(","));
 
 	}
-	
-	
 	/**
 	  * @Description: 
 	  * @param list

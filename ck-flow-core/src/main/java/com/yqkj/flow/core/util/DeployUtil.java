@@ -1,6 +1,6 @@
 package com.yqkj.flow.core.util;
 
-import com.yqkj.flow.collection.CollectionUtil;
+import com.yqkj.flow.util.collection.CollectionUtil;
 import org.flowable.validation.ValidationError;
 
 import java.util.List;

@@ -32,7 +32,7 @@ public interface FlowConstants {
     /**
      * 任务下一步
      */
-    String FLOW_Next_TASK = "next_task";
+    String FLOW_COMPILE = "compile";
 
     /**
      * 任务结束
@@ -43,6 +43,9 @@ public interface FlowConstants {
      * 字符串方式发布发布
      */
     String DEPLOY_STR="DEPLOY_STR";
-
+    /**
+     * 流程图
+     */
+    String FLOW_BPMN = "bpmn";
 
 }

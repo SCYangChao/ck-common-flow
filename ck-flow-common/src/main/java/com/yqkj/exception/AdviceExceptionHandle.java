@@ -2,6 +2,7 @@ package com.yqkj.exception;
 
 import com.yqkj.flow.util.ResponseToole;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +38,7 @@ public class AdviceExceptionHandle {
     public Object handleBizException(BizException e) {
         return  new Object();
     }
+
 
     @ResponseBody
     @ExceptionHandler({Throwable.class})

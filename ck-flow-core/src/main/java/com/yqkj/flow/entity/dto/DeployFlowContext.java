@@ -8,6 +8,7 @@ import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntityImpl;
 import org.flowable.engine.repository.Deployment;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -41,11 +42,9 @@ public class DeployFlowContext extends  FlowContext {
     private String xmlStr;
 
     /**
-     * 流程发布返回
+     * 流程处理结果
      */
-    private List<ProcessDefinitionEntity> deploymentResult;
-
-
+    private List<Map<String , Object>> result;
 
     public DeployFlowContext(FlowEnum.DeployTypeEnum deployTypeEnum, String xmlStr) {
         this.deployTypeEnum = deployTypeEnum;

@@ -18,8 +18,10 @@ public class StartRequest implements Serializable {
     /**
      * 流程ＩＤ名称
      */
-    private String flowKey;;
+    private String flowKey;
 
     private Map<String,Object> variable;
+
+    private  String taskId;
 
 }

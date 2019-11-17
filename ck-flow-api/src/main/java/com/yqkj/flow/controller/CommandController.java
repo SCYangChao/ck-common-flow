@@ -57,7 +57,25 @@ public class CommandController {
     }
     /**
      *
-     * describe: 流程开始
+     * describe: 完成
+     * @author: yangchao.cool@gmail.com
+     * creat_date: 下午5:52
+     *
+     **/
+    @PostMapping(value = "/compile")
+    @ApiOperation(value = "任务完成" , tags = FlowConstants.CMD_VERSION_1_0)
+    public R<Map<String , Object>> compile(@RequestBody  StartRequest startRequest) {
+        CommandFlowContext result= new CommandFlowContext();
+        result.setTaskId(startRequest.getTaskId());
+        result.setVariable(startRequest.getVariable());
+        result.setCmdEnum(FlowEnum.FlowCmdEnum.COMPILE);
+        iCommandService.cmd(result);
+        return ResponseToole.success(result.getResult());
+    }
+
+    /**
+     *
+     * describe: 信息
      * @author: yangchao.cool@gmail.com
      * creat_date: 下午5:52
      *
@@ -66,7 +84,25 @@ public class CommandController {
     @ApiOperation(value = "任务查询" , tags = FlowConstants.CMD_VERSION_1_0)
     public R<Map<String , Object>> queryTask(@RequestBody  StartRequest startRequest) {
         CommandFlowContext result= new CommandFlowContext();
+        result.setFlowKey(startRequest.getFlowKey());
         result.setCmdEnum(FlowEnum.FlowCmdEnum.QUERY_TASK);
+        iCommandService.cmd(result);
+        return ResponseToole.success(result.getResult());
+    }
+    /**
+     *
+     * describe: 信息
+     * @author: yangchao.cool@gmail.com
+     * creat_date: 下午5:52
+     *
+     **/
+    @PostMapping(value = "/bpmn")
+    @ApiOperation(value = "信息" , tags = FlowConstants.CMD_VERSION_1_0)
+    public R<Map<String , Object>> bpmn(@RequestBody  StartRequest startRequest) {
+        CommandFlowContext result= new CommandFlowContext();
+        result.setFlowKey(startRequest.getFlowKey());
+        result.setTaskId(startRequest.getTaskId());
+        result.setCmdEnum(FlowEnum.FlowCmdEnum.QUERY_BPMN);
         iCommandService.cmd(result);
         return ResponseToole.success(result.getResult());
     }
