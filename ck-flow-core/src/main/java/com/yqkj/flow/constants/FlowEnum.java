@@ -18,7 +18,7 @@ public interface FlowEnum {
         START(FlowConstants.FLOW_START , "流程开始"),
         COMPILE(FlowConstants.FLOW_COMPILE, "流程下一步执行"),END("end","终止流程"),
         FINISH("finish","流程结束"),
-        QUERY_BPMN(FlowConstants.FLOW_BPMN,"图片"),
+        QUERY_BPMN(FlowConstants.FLOW_TASK,"图片"),
         QUERY_TASK(FlowConstants.FLOW_QUERY_TASK,"任务查询");
 
         private String vlue;

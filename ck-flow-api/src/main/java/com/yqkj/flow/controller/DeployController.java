@@ -41,7 +41,8 @@ public class DeployController {
                 new String(file.getBytes()));
         deployFlowContext.setName(file.getOriginalFilename());
         Boolean deploy = deployServiceService.deploy(deployFlowContext);
-        return  ResponseToole.success(new DeployResponse(deploy,deployFlowContext.getErrorMsg()));
+
+        return  ResponseToole.success(new DeployResponse(deploy,deployFlowContext.getErrorMsg() ,deployFlowContext.getResult()));
     }
     /**
      *
@@ -56,7 +57,7 @@ public class DeployController {
         DeployFlowContext deployFlowContext = new DeployFlowContext(FlowEnum.DeployTypeEnum.DEPLOY_STR,
                 delpyRequest.getXml());
         Boolean deploy = deployServiceService.deploy(deployFlowContext);
-        return  ResponseToole.success(new DeployResponse(deploy,deployFlowContext.getErrorMsg()));
+        return  ResponseToole.success(new DeployResponse(deploy,deployFlowContext.getErrorMsg() , deployFlowContext.getResult()));
     }
 
 

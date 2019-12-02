@@ -46,6 +46,6 @@ public interface FlowConstants {
     /**
      * 流程图
      */
-    String FLOW_BPMN = "bpmn";
+    String FLOW_TASK = "bpmn";
 
 }

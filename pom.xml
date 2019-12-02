@@ -51,5 +51,6 @@
         <module>ck-flow-common</module>
         <module>ck-flow-api</module>
         <module>ck-flow-client</module>
+        <module>ck-flow-modeler</module>
     </modules>
 </project>

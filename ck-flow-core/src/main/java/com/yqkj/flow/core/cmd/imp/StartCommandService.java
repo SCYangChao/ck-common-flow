@@ -26,6 +26,7 @@ public class StartCommandService extends AbstractCommandService<Map<String, Stri
         ProcessInstance processInstance = this.iProcessEngine.getRuntimeService().startProcessInstanceByKey(deployFlowContext.getFlowKey()
                 , deployFlowContext.getVariable());
         String processInstanceId = processInstance.getProcessInstanceId();
+//        this.iProcessEngine.getTaskService().getVariables()
         Map<String , String>  result = new HashMap<>();
         result.put("processInstanceId" , processInstanceId);
         result.put("processDefinitionId" , processInstance.getProcessDefinitionId());

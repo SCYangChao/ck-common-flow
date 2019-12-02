@@ -5,11 +5,9 @@ import com.yqkj.flow.constants.FlowConstants;
 import com.yqkj.flow.core.cmd.AbstractCommandService;
 import com.yqkj.flow.entity.dto.cmd.CommandFlowContext;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.bpmn.model.FlowElement;
 import org.flowable.bpmn.model.Process;
-import org.flowable.common.engine.impl.util.IoUtil;
 import org.flowable.engine.history.HistoricActivityInstance;
 import org.flowable.image.impl.DefaultProcessDiagramGenerator;
 import org.springframework.stereotype.Service;
@@ -29,8 +27,8 @@ import java.util.Map;
   * creat_date: 下午6:14
   *
  **/
-@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_BPMN)
-public class BpmnCommandService extends AbstractCommandService<Object> {
+@Service(FlowConstants.COMMAND_PRE+FlowConstants.FLOW_TASK)
+public class TaskCommandService extends AbstractCommandService<Object> {
 
     @Override
     public  Boolean excute(CommandFlowContext<Object> deployFlowContext){
@@ -49,14 +47,19 @@ public class BpmnCommandService extends AbstractCommandService<Object> {
         /**
          * 获得活动的节点
          */
+
         List<HistoricActivityInstance> highLightedActivitList =  this.iProcessEngine.getHistoryService().createHistoricActivityInstanceQuery().processInstanceId(deployFlowContext.getTaskId()).orderByHistoricActivityInstanceStartTime().asc().list();
+
+        List<String> flows = new ArrayList<>();
 
         for(HistoricActivityInstance tempActivity : highLightedActivitList){
             String activityId = tempActivity.getActivityId();
+
             highLightedActivitis.add(activityId);
+            flows.add(tempActivity.getId());
         }
 
-        List<String> flows = new ArrayList<>();
+
 
         InputStream inputStream = defaultProcessDiagramGenerator.generateDiagram(bpmnModel, "jpg", highLightedActivitis,flows,"宋体" , "宋体","宋体",null,1D,false);
 

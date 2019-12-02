@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
   *
  **/
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.yqkj.flow","com.yqkj.exception"})
+@ComponentScan(basePackages = {"com.yqkj.flow","com.yqkj.exception","org.flowable.ui.modeler.rest"})
 public class FlowServiceAppliction {
 
     public  static  void main(String[] arg) {
